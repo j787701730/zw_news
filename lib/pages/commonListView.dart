@@ -7,6 +7,8 @@ class CommonListView extends StatelessWidget {
 
   CommonListView(this.data);
 
+  int padding = 30;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,37 +17,38 @@ class CommonListView extends StatelessWidget {
           : ListView(
               children: data.map<Widget>((item) {
                 return ListTile(
+                  contentPadding: EdgeInsets.only(left: 10, right: 10,bottom: 6),
                   title: Text(item['title']),
                   subtitle: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       SizedBox(
-                        width: (MediaQuery.of(context).size.width - 60) / 3,
-                        height: (MediaQuery.of(context).size.width - 60) / 3,
+                        width: (MediaQuery.of(context).size.width - padding) / 3,
+                        height: (MediaQuery.of(context).size.width - padding) / 3,
                         child: item['thumbnail_pic_s'] != null
                             ? Image.network(
                                 item['thumbnail_pic_s'],
-                                fit: BoxFit.contain,
+                                fit: BoxFit.cover,
                               )
                             : null,
                       ),
                       SizedBox(
-                        width: (MediaQuery.of(context).size.width - 60) / 3,
-                        height: (MediaQuery.of(context).size.width - 60) / 3,
+                        width: (MediaQuery.of(context).size.width - padding) / 3,
+                        height: (MediaQuery.of(context).size.width - padding) / 3,
                         child: item['thumbnail_pic_s02'] != null
                             ? Image.network(
                                 item['thumbnail_pic_s02'],
-                                fit: BoxFit.contain,
+                                fit: BoxFit.cover,
                               )
                             : null,
                       ),
                       SizedBox(
-                        width: (MediaQuery.of(context).size.width - 60) / 3,
-                        height: (MediaQuery.of(context).size.width - 60) / 3,
+                        width: (MediaQuery.of(context).size.width - padding) / 3,
+                        height: (MediaQuery.of(context).size.width - padding) / 3,
                         child: item['thumbnail_pic_s03'] != null
                             ? Image.network(
                                 item['thumbnail_pic_s03'],
-                                fit: BoxFit.contain,
+                                fit: BoxFit.cover,
                               )
                             : null,
                       ),

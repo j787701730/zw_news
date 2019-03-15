@@ -16,6 +16,7 @@ class NewsContent extends StatelessWidget {
       ),
       withZoom: true,
       withLocalStorage: true,
+      withJavascript: false,
       hidden: true,
       initialChild: Container(
         width: MediaQuery.of(context).size.width,

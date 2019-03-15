@@ -47,29 +47,41 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text('NEWS'),
-        centerTitle: true,
-        bottom: new TabBar(
-          isScrollable: true,
-          tabs: newsType.map<Widget>((item) {
-            return (Tab(child: Text(item['label'])));
-          }).toList(),
-          controller: _tabController,
-        ),
+        body: NestedScrollView(
+      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        return [
+          new SliverAppBar(
+            bottom: PreferredSize(
+              child: new Container(
+                child: new TabBar(
+//                  indicatorSize: TabBarIndicatorSize.label,
+                  unselectedLabelColor: Colors.black45,
+                  isScrollable: true,
+                  tabs: newsType.map<Widget>((item) {
+                    return (Tab(child: Text(item['label'])));
+                  }).toList(),
+                  controller: _tabController,
+                ),
+              ),
+            ),
+          )
+        ];
+      },
+      body: new TabBarView(
+        controller: _tabController,
+        children: <Widget>[
+          Top('top'),
+          SheHui('shehui'),
+          GuoNei('guonei'),
+          GuoJi('guoji'),
+          YuLe('yule'),
+          TiYu('tiyu'),
+          JunShi('junshi'),
+          KeJi('keji'),
+          CaiJing('caijing'),
+          ShiShang('shishang')
+        ],
       ),
-      body: new TabBarView(controller: _tabController, children: <Widget>[
-        Top('top'),
-        SheHui('shehui'),
-        GuoNei('guonei'),
-        GuoJi('guoji'),
-        YuLe('yule'),
-        TiYu('tiyu'),
-        JunShi('junshi'),
-        KeJi('keji'),
-        CaiJing('caijing'),
-        ShiShang('shishang')
-      ]),
-    );
+    ));
   }
 }
